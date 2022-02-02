@@ -1,0 +1,162 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "",
+    "description": "",
+    "version": "1.0"
+  },
+  "produces": [
+    "application/json"
+  ],
+  "host": "localhost:3000",
+  "basePath": "/",
+  "paths": {
+    "/listAvailabilities": {
+      "get": {
+        "operationId": "listAvailabilitiesTest",
+        "tags": [
+          "/listAvailabilities"
+        ],
+        "description": "List all availabilities",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/listReservations": {
+      "get": {
+        "operationId": "listReservationsTest",
+        "tags": [
+          "/listReservations"
+        ],
+        "description": "List all reservations",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/createAvailability": {
+      "post": {
+        "operationId": "createAvailabilityTest",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "/createAvailability"
+        ],
+        "description": "Creates reservation availability for the restaurant",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Availability"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Successfully created the reservation availability"
+          }
+        }
+      }
+    },
+    "/createReservation": {
+      "post": {
+        "operationId": "createReservationTest",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "/createReservation"
+        ],
+        "description": "Makes reservation for the restaurant",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Reservation"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Successfully created the reservation availability"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Availability": {
+      "type": "object",
+      "properties": {
+        "RestaurantId": {
+          "type": "string",
+          "description": "Restaurants id"
+        },
+        "ReservationCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Number of reservation availabilities to create"
+        },
+        "PartySize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Number of people"
+        },
+        "DateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date and time of the reservation"
+        }
+      },
+      "xml": {
+        "name": "Availability"
+      }
+    },
+    "Reservation": {
+      "type": "object",
+      "properties": {
+        "AvailabilityId": {
+          "type": "string",
+          "description": "Availability id"
+        },
+        "RestaurantId": {
+          "type": "string",
+          "description": "Restaurants id"
+        },
+        "PartySize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Number of people"
+        },
+        "Name": {
+          "type": "string",
+          "description": "Name"
+        },
+        "Email": {
+          "type": "string",
+          "description": "Email"
+        },
+        "Time": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date and time of the reservation"
+        }
+      },
+      "xml": {
+        "name": "Availability"
+      }
+    }
+  }
+}
